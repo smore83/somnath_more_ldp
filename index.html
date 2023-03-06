@@ -17,16 +17,18 @@
         <h1>Session Storage</h1>
         <h4>Session storage Score :</h4>
         <div id="counter1"></div><br>
-        <button id="exec">Increament</button>
+        <button  onclick="functionToExecute1()">Decreament</button>
+        <button id="exec" onclick="functionToExecute()">Increament</button>
         <button id="reset">Reset</button>
     </div>
     <script>
         var localscore = localStorage.getItem('on_load_counter');
         var sessionscore= sessionStorage.getItem('on_load_counter');
+       
         if (localscore === null) {
             localscore = 0;
         }
-        if (sessionscore=== null) {
+        if (sessionscore === null) {
            sessionscore= 0;
         }
         function functionToExecute() {
@@ -41,7 +43,19 @@
             document.getElementById('counter').innerHTML =localscore ;
             document.getElementById('counter1').innerHTML =sessionscore;
         }
-        document.getElementById('exec').addEventListener('click', functionToExecute);
+        function functionToExecute1() {
+            //wtd
+            console.log(localscore );
+
+           localscore --;
+           sessionscore --;
+            localStorage.setItem("on_load_counter",localscore );
+            sessionStorage.setItem("on_load_counter",sessionscore);
+            console.log(sessionscore);
+            document.getElementById('counter').innerHTML =localscore ;
+            document.getElementById('counter1').innerHTML =sessionscore;
+        }
+        // document.getElementById('exec').addEventListener('click', functionToExecute);
         document.getElementById('counter').innerHTML =localscore ;
         document.getElementById('counter1').innerHTML =sessionscore;
 
